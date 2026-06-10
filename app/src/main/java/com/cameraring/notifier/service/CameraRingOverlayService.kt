@@ -10,6 +10,8 @@ import android.os.Build
 import android.os.IBinder
 import android.view.Gravity
 import android.view.WindowManager
+import android.os.Handler
+import android.os.Looper
 
 class CameraRingOverlayService : Service() {
 
