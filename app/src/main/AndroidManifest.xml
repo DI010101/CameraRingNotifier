@@ -4,19 +4,19 @@
 
     <!-- Overlay -->
     <uses-permission
-        android:name="android.permission.SYSTEM_ALERT_WINDOW"/>
+        android:name="android.permission.SYSTEM_ALERT_WINDOW" />
 
-    <!-- Benachrichtigungen -->
+    <!-- Notifications -->
     <uses-permission
-        android:name="android.permission.POST_NOTIFICATIONS"/>
+        android:name="android.permission.POST_NOTIFICATIONS" />
 
     <!-- Foreground Service -->
     <uses-permission
-        android:name="android.permission.FOREGROUND_SERVICE"/>
+        android:name="android.permission.FOREGROUND_SERVICE" />
 
-    <!-- Boot -->
+    <!-- Boot Receiver -->
     <uses-permission
-        android:name="android.permission.RECEIVE_BOOT_COMPLETED"/>
+        android:name="android.permission.RECEIVE_BOOT_COMPLETED" />
 
     <application
         android:allowBackup="true"
@@ -29,44 +29,50 @@
             android:exported="true">
 
             <intent-filter>
+
                 <action
-                    android:name="android.intent.action.MAIN"/>
+                    android:name="android.intent.action.MAIN" />
 
                 <category
-                    android:name="android.intent.category.LAUNCHER"/>
+                    android:name="android.intent.category.LAUNCHER" />
+
             </intent-filter>
 
         </activity>
 
+        <!-- Overlay Service -->
         <service
             android:name=".service.CameraRingOverlayService"
             android:foregroundServiceType="specialUse"
-            android:exported="false"/>
+            android:exported="false" />
 
+        <!-- Notification Listener -->
         <service
             android:name=".service.NotificationListener"
             android:label="Camera Ring Notifications"
-            android:permission=
-                "android.permission.BIND_NOTIFICATION_LISTENER_SERVICE"
+            android:permission="android.permission.BIND_NOTIFICATION_LISTENER_SERVICE"
             android:exported="true">
 
             <intent-filter>
+
                 <action
-                    android:name=
-                    "android.service.notification.NotificationListenerService"/>
+                    android:name="android.service.notification.NotificationListenerService" />
+
             </intent-filter>
 
         </service>
 
+        <!-- Autostart -->
         <receiver
             android:name=".receiver.BootReceiver"
             android:enabled="true"
             android:exported="true">
 
             <intent-filter>
+
                 <action
-                    android:name=
-                    "android.intent.action.BOOT_COMPLETED"/>
+                    android:name="android.intent.action.BOOT_COMPLETED" />
+
             </intent-filter>
 
         </receiver>
