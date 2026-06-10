@@ -207,3 +207,18 @@ class CameraRingOverlayService : Service() {
                     android.R.drawable.ic_dialog_info
                 )
                 .setOngoing(true)
+                .build()
+
+        } else {
+
+            Notification.Builder(this)
+                .setContentTitle(
+                    "Camera Ring Notifier"
+                )
+                .setSmallIcon(
+                    android.R.drawable.ic_dialog_info
+                )
+                .build()
+        }
+    }
+}
