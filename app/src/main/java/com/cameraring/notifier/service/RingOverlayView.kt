@@ -9,41 +9,42 @@ class RingOverlayView(
 ) : View(context) {
 
     private val paint = Paint().apply {
+
         style = Paint.Style.STROKE
+
         color = Color.GREEN
-        strokeWidth = 12f
+
+        strokeWidth = 10f
+
         isAntiAlias = true
     }
 
     var ringSize = 120f
-        set(value) {
-            field = value
-            invalidate()
-        }
 
-    var ringThickness = 8f
-        set(value) {
-            field = value
-            paint.strokeWidth = value
-            invalidate()
-        }
+    var ringThickness = 10f
 
     var ringColor = Color.GREEN
-        set(value) {
-            field = value
-            paint.color = value
-            invalidate()
-        }
 
-    override fun onDraw(canvas: Canvas) {
+    var visibleRing = true
+
+    override fun onDraw(
+        canvas: Canvas
+    ) {
+
         super.onDraw(canvas)
 
-        val radius = ringSize / 2f
+        if (!visibleRing) {
+            return
+        }
+
+        paint.color = ringColor
+
+        paint.strokeWidth = ringThickness
 
         canvas.drawCircle(
             width / 2f,
             height / 2f,
-            radius,
+            ringSize / 2f,
             paint
         )
     }
